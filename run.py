@@ -1,4 +1,4 @@
-#main reads buttons and sends number to ESP (not sending rn, getting error)
+#main reads buttons and sends number to ESP (not sending rn, getting error), then ESP has a function Publish(IP,number) that sends the number to the car
 
 def main():
     from machine import UART, Pin, Timer
@@ -29,13 +29,13 @@ def main():
                 num = 1
                 s = functions.serial_comm(115200)
                 s.abort()
-                s.send_code(num)
+                s.send_code('Publish.send(''10.247.37.202'',''1'')')
                 print(num)
             if count > 10:
                 num = 2
                 s = functions.serial_comm(115200)
                 s.abort()
-                s.send_code(num)
+                s.send_code('Publish.send(''10.247.37.202'',''2'')')
                 print(num)
                 
 
