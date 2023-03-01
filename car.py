@@ -1,6 +1,7 @@
 #gets value from airtable and sends main() to 2040 to start loop 
 
 import serial
+import time
 s = serial.Serial('COM9', baudrate=115200)
 
 import requests
@@ -17,8 +18,9 @@ print(value)
 if value == 'Start':
     print('works')
     s.write(b'import run\r\n')
+    time.sleep(1)
     s.write(b'run.main()\r\n')
-
+    time.sleep(1)
 
 print(s.read_all())
 s.close()
